@@ -1,0 +1,37 @@
+
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Inflation Prediction App</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body style="background: #000;">
+ <div class="login">
+	<h1>INFLATION PREDICTION</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="Food" placeholder="Food" required="required" />
+        <input type="text" name="PMI(t-1)" placeholder="PMI(t-1)" required="required" />
+		<input type="text" name="ATM" placeholder="ATM" required="required" />
+		<input type="text" name="WEBPAY" placeholder="WEBPAY" required="required" />
+		<input type="text" name="Insecurity" placeholder="Insecurity" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predicted Inflation</button>
+    </form>
+   <br>
+   {{ prediction_text }}
+   
+    <br>
+   {{ kulikuli }}
+   
+ </div>
+</body>
+</html>
