@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan 17 21:08:44 2022
-
-@author: eakan
-"""
 
 import numpy as np
 from flask import Flask, request, jsonify, render_template
@@ -22,10 +16,11 @@ from sklearn.ensemble import AdaBoostRegressor
 from pandas import DataFrame
 from matplotlib import pyplot
 
-#data=pd.read_csv('data_qtr.csv')
+data=pd.read_csv('Data.csv')
+X_data = data.drop(['Headline', 'Date'], axis=1)
 
-data = pd.read_excel('Elijah_inflation.xlsx', sheet_name="Full Sample").dropna()
-X_data = data.drop(['Headline', 'Date', 'Core'], axis=1)
+# data = pd.read_excel('Elijah_inflation.xlsx', sheet_name="Full Sample").dropna()
+# X_data = data.drop(['Headline', 'Date', 'Core'], axis=1)
 
 y = data['Headline']
 
@@ -33,21 +28,20 @@ y = data['Headline']
 #data = data[data['OBB']!='']
 
 
+
 X_train, X_test, y_train, y_test = train_test_split(
-    X_data, y, test_size=0.2, random_state=1)
+    X_data, y, test_size=0.3, random_state=1)
 print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
 
 #model = RandomForestRegressor(n_estimators=50, max_depth=5)
 
 
-rf = RandomForestRegressor(n_estimators=400,
+rf = RandomForestRegressor(n_estimators=4000,
                               n_jobs=-1,
                               oob_score=True,
                               bootstrap=True,
                               max_depth=5,
                               random_state=42)
-
-rf.fit(X_train, y_train)
 
 
 rf.fit(X_train,y_train)
@@ -59,7 +53,7 @@ print('R^2 Training Score: {:.2f} \nOOB Score: {:.2f} \nR^2 Validation Score: {:
              rf.oob_score_,rf.score(X_test, y_test)))
 
 
-Time=list(range(0,21,1))
+Time=list(range(0,40,1))
 
 
 # plotting the points  
@@ -87,7 +81,7 @@ plt.show()
 
 
 
-X2= data[['Food','PMI(t-1)','ATM','WEBPAY','Insecurity']]
+X2= data[['Food','COP','M1']]
 
 
 y2 = y
@@ -124,7 +118,7 @@ y2_pred = pd.Series(y2_pred).sort_index()
 
 
 
-Time=list(range(0, 32,1))
+Time=list(range(0, 40,1))
 
 # plotting the points  
 
