@@ -17,13 +17,11 @@
  <div class="login">
 	<h1>INFLATION PREDICTION</h1>
 
-     <!-- Main Input For Receiving Query to our ML -->
+      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
     	<input type="text" name="Food" placeholder="Food" required="required" />
-        <input type="text" name="PMI(t-1)" placeholder="PMI(t-1)" required="required" />
-		<input type="text" name="ATM" placeholder="ATM" required="required" />
-		<input type="text" name="WEBPAY" placeholder="WEBPAY" required="required" />
-		<input type="text" name="Insecurity" placeholder="Insecurity" required="required" />
+        <input type="text" name="COP" placeholder="COP" required="required" />
+		<input type="text" name="M1" placeholder="M1" required="required" />
         <button type="submit" class="btn btn-primary btn-block btn-large">Predicted Inflation</button>
     </form>
    <br>
