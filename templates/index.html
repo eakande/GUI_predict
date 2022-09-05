@@ -1,6 +1,8 @@
 
 
 
+
+
 <!DOCTYPE html>
 <html >
 <head>
@@ -20,9 +22,9 @@
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="Food" placeholder="Food" required="required" />
-        <input type="text" name="COP" placeholder="COP" required="required" />
-		<input type="text" name="M1" placeholder="M1" required="required" />
+    	<input type="text" name="Food Prices" placeholder="Food Prices" required="required" />
+        <input type="text" name="Transportation Prices" placeholder="Transportation Prices" required="required" />
+		<input type="text" name="Housing and Utility Prices" placeholder="Housing and Utility Prices" required="required" />
         <button type="submit" class="btn btn-primary btn-block btn-large">Predicted Inflation</button>
     </form>
    <br>
@@ -34,3 +36,4 @@
  </div>
 </body>
 </html>
+
