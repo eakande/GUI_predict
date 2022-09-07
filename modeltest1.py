@@ -25,14 +25,14 @@ X = data.drop(['Headline Inflation', 'Date'], axis=1)
 y = data['Headline Inflation']
 
 
-X_train = X[X.index < 100]
-y_train = y[y.index < 100]              
+X_train = X[X.index < 90]
+y_train = y[y.index < 90]              
     
-X_test = X[X.index >= 100]    
-y_test = y[y.index >= 100]
+X_test = X[X.index >= 90]    
+y_test = y[y.index >= 90]
 
 
-rf = RandomForestRegressor(n_estimators=4000,
+rf = RandomForestRegressor(n_estimators=400,
                               n_jobs=-1,
                               oob_score=True,
                               bootstrap=True,
@@ -77,17 +77,17 @@ plt.show()
 
 
 
-X2= data[['Food Prices','Transportation Prices','Housing and Utility Prices', 'Credit to Core Private Sectors']]
+X2= data[['Food Prices','Transportation Prices']]
 
 
 y2 = y
 ###### Split Data set
 
-X2_train = X2[X2.index < 100]
-y2_train = y2[y2.index < 100]              
+X2_train = X2[X2.index < 90]
+y2_train = y2[y2.index < 90]              
     
-X2_test = X2[X2.index >= 100]    
-y2_test = y2[y2.index >= 100]
+X2_test = X2[X2.index >= 90]    
+y2_test = y2[y2.index >= 90]
 
 
 
@@ -97,7 +97,7 @@ y2_test = y2[y2.index >= 100]
 #X2_test = np.nan_to_num(X2_test)
 
 
-rf2 = RandomForestRegressor(n_estimators=4000,
+rf2 = RandomForestRegressor(n_estimators=400,
                               n_jobs=-1,
                               oob_score=True,
                               bootstrap=True,
@@ -118,7 +118,7 @@ y2_pred = pd.Series(y2_pred).sort_index()
 
 
 
-Time=list(range(0, 34,1))
+Time=list(range(0, 44,1))
 
 # plotting the points  
 
