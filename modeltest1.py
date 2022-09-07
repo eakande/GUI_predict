@@ -77,7 +77,7 @@ plt.show()
 
 
 
-X2= data[['Food Prices','Transportation Prices','Housing and Utility Prices']]
+X2= data[['Food Prices','Transportation Prices','Housing and Utility Prices', 'Credit to other Private Sectors']]
 
 
 y2 = y
