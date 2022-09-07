@@ -1,4 +1,3 @@
-
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
@@ -25,12 +24,11 @@ X = data.drop(['Headline Inflation', 'Date'], axis=1)
 y = data['Headline Inflation']
 
 
-
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.3, random_state=1)
-print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
-
-#model = RandomForestRegressor(n_estimators=50, max_depth=5)
+X_train = X[X.index < 100]
+y_train = y[y.index < 100]              
+    
+X_test = X[X.index >= 100]    
+y_test = y[y.index >= 100]
 
 
 rf = RandomForestRegressor(n_estimators=4000,
@@ -50,7 +48,7 @@ print('R^2 Training Score: {:.2f} \nOOB Score: {:.2f} \nR^2 Validation Score: {:
              rf.oob_score_,rf.score(X_test, y_test)))
 
 
-Time=list(range(0,93,1))
+Time=list(range(0,100,1))
 
 
 # plotting the points  
@@ -84,7 +82,11 @@ X2= data[['Food Prices','Transportation Prices','Housing and Utility Prices']]
 y2 = y
 ###### Split Data set
 
-X2_train,X2_test,y2_train,y2_test = train_test_split(X2,y2,test_size=0.3,random_state=0)
+X2_train = X2[X2.index < 100]
+y2_train = y2[y2.index < 100]              
+    
+X2_test = X2[X2.index >= 100]    
+y2_test = y2[y2.index >= 100]
 
 
 
@@ -115,7 +117,7 @@ y2_pred = pd.Series(y2_pred).sort_index()
 
 
 
-Time=list(range(0, 93,1))
+Time=list(range(0, 100,1))
 
 # plotting the points  
 
@@ -125,9 +127,6 @@ pyplot.legend()
 pyplot.show()
 
 
-pickle.dump(rf2, open('modeltest1.pkl','wb'))
-
-modeltest1 = pickle.load(open('modeltest1.pkl','rb'))
 
 
 
